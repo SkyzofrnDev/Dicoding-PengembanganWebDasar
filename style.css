@@ -32,12 +32,10 @@ a:hover {
   transition: ease-in-out 200ms;
 }
 
-/* ================= HEADER / NAV ================= */
 header {
   width: 100%;
   padding: 20px 90px;
   background-color: #121212;
-  /* default: tidak fixed (sesuai request, fixed hanya <=927px) */
   position: relative;
   z-index: 100;
 }
@@ -50,6 +48,8 @@ nav {
 
 .judul {
   color: white;
+  font-size: 30px;
+  font-weight: bold;
 }
 
 .nav-links {
@@ -61,7 +61,6 @@ nav > .nav-links > li {
   margin: 0 15px;
 }
 
-/* toggle + hamburger (default hidden) */
 .nav-toggle {
   display: none;
 }
@@ -98,28 +97,24 @@ nav > .nav-links > li {
 .hamburger span::before { top: -8px; }
 .hamburger span::after  { top: 8px; }
 
-/* ================= MAIN ================= */
 main {
   padding: 0 100px;
 }
 
-/* ================= HERO ================= */
 .herosection {
   height: 60vh;
   display: flex;
   align-items: flex-end;
 }
 
-/* font hero responsif */
-.herosection section > p.typing,
-.herosection section > p.notyping {
-  font-size: clamp(2.4rem, 6vw, 6.2rem);
+.typing,
+.notyping {
+  font-size: clamp(2.2rem, 6vw, 6.2rem);
   font-weight: 600;
   line-height: 1.05;
 }
 
-/* "Company Profile" (p ke-3 di hero) */
-.herosection section > p:nth-child(3) {
+.hero-tagline {
   font-size: clamp(1rem, 2.2vw, 1.25rem);
   font-weight: 500;
   margin-top: 20px;
@@ -130,7 +125,6 @@ main {
   text-underline-offset: clamp(8px, 1.8vw, 20px);
 }
 
-/* typing effect */
 .typing {
   border-right: 2px solid;
   white-space: nowrap;
@@ -140,7 +134,7 @@ main {
 
 @keyframes typing {
   from { width: 0; }
-  to   { width: 100%; }
+  to { width: 100%; }
 }
 
 @keyframes blink-caret {
@@ -161,7 +155,6 @@ main {
   margin: 0 50px;
 }
 
-/* ================= ABOUT ================= */
 .about {
   margin: 0 100px;
   margin-top: 220px;
@@ -171,7 +164,7 @@ article {
   display: flex;
 }
 
-.description > h1 {
+.description > h3 {
   margin: 30px 0;
   margin-top: 100px;
   font-size: xx-large;
@@ -195,12 +188,10 @@ article {
   font-weight: 600;
 }
 
-/* ================= SKILL ================= */
 .skill {
   margin-top: 200px;
 }
 
-/* ================= CARD LIST ================= */
 .card-format-container {
   width: 1142px;
   margin: 0 auto;
@@ -278,7 +269,6 @@ article {
 .card-item:nth-child(5n) .card-circle { background-color: #cd3e94; }
 .card-item:nth-child(6n) .card-circle { background-color: #4c49ea; }
 
-/* ================= ACHIEVEMENTS ================= */
 .Achievements {
   margin-top: 100px;
 }
@@ -344,7 +334,6 @@ aside {
   align-items: center;
 }
 
-/* ================= FOOTER ================= */
 footer {
   justify-content: space-between;
   align-items: center;
@@ -359,9 +348,6 @@ footer > p {
   font-weight: 500;
 }
 
-/* ================= RESPONSIVE ================= */
-
-/* cards */
 @media only screen and (max-width: 979px) {
   .card-item {
     flex-basis: calc(50% - 30px);
@@ -381,7 +367,6 @@ footer > p {
   }
 }
 
-/* NAV jadi fixed + menu dropdown mulai <=927px */
 @media (max-width: 927px) {
   header {
     position: fixed;
@@ -392,12 +377,10 @@ footer > p {
     padding: 16px 20px;
   }
 
-  /* offset biar konten gak ketutup header */
   main {
     padding: 110px 25px 0;
   }
 
-  /* anchor biar gak ketutup header */
   section {
     scroll-margin-top: 110px;
   }
@@ -410,13 +393,12 @@ footer > p {
     position: fixed;
     left: 0;
     right: 0;
-    top: 72px; /* perkiraan tinggi header */
+    top: 72px;
     background: #121212;
     display: flex;
     flex-direction: column;
     gap: 14px;
     padding: 18px 20px 24px;
-
     transform: translateY(-120%);
     opacity: 0;
     pointer-events: none;
@@ -433,7 +415,6 @@ footer > p {
     pointer-events: auto;
   }
 
-  /* hamburger jadi X */
   .nav-toggle:checked + .hamburger span {
     background: transparent;
   }
@@ -449,7 +430,6 @@ footer > p {
   }
 }
 
-/* 1 kolom card */
 @media only screen and (max-width: 639px) {
   .card-item {
     flex-basis: 100%;
@@ -468,20 +448,30 @@ footer > p {
   .card-subtitle {
     font-size: 16px;
   }
+
+  .social-media > li:nth-child(2) {
+    margin: 0 20px;
+  }
 }
 
-/* layout mobile */
 @media only screen and (max-width: 767px) {
   header { padding: 16px 20px; }
 
   .card-format-container {
     width: 96%;
   }
-.judul{
-    font-size:15px;
-}
+
+  .judul {
+    font-size: clamp(0.95rem, 2.4vw, 1.25rem);
+  }
+
   .typing {
     display: none;
+  }
+
+  .notyping {
+    display: block;
+    font-size: clamp(1.4rem, 5.2vw, 2.6rem);
   }
 
   .about {
@@ -494,7 +484,7 @@ footer > p {
     text-align: center;
   }
 
-  .description h1 {
+  .description h3 {
     margin: 20px;
   }
 
@@ -517,17 +507,12 @@ footer > p {
     display: block;
   }
 
-  .social-media > li:nth-child(2) {
-    margin: 0;
-  }
-
   .social-media {
     display: flex;
     justify-content: space-around;
   }
 }
 
-/* typing dimatiin di layar medium (sesuai punyamu), notyping muncul */
 @media only screen and (max-width: 1300px) {
   .typing {
     display: none;
@@ -535,6 +520,7 @@ footer > p {
 
   .notyping {
     display: block;
+    font-size: clamp(2rem, 5.4vw, 4.4rem);
   }
 
   .card-format-container {
